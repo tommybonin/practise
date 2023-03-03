@@ -1,1 +1,28 @@
-https://blog.csdn.net/weixin_71429850/article/details/127437081
+version: '3' 
+services: 
+   webex1: 
+      build: 
+        context: ../../dapr/20230227/ex01 
+        dockerfile: Dockerfile
+        args : 
+          dbname: dbname
+          password: password
+      image: daprex01:v1.0
+      container_name: daprex01 
+      ports: 
+          - "88:80" 
+      labels:
+        developer: leijiang
+   webex2: 
+      build: 
+        context: ../../dapr/20230227/ex02 
+        dockerfile: Dockerfile
+        args : 
+          dbname: dbname
+          password: password
+      image: daprex02:v1.0
+      container_name: daprex02 
+      ports: 
+          - "89:80" 
+      labels:
+        developer: leijiang
