@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {
+    "net6.0": {
       "Dapr.Client/1.10.0": {
         "type": "package",
         "dependencies": {
@@ -11,14 +11,10 @@
           "System.Net.Http.Json": "5.0.0"
         },
         "compile": {
-          "lib/netcoreapp3.1/Dapr.Client.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Dapr.Client.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp3.1/Dapr.Client.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp3.1/Dapr.Client.dll": {}
         }
       },
       "Google.Api.CommonProtos/2.2.0": {
@@ -27,14 +23,10 @@
           "Google.Protobuf": "[3.13.0, 4.0.0)"
         },
         "compile": {
-          "lib/netstandard2.0/Google.Api.CommonProtos.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Google.Api.CommonProtos.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Google.Api.CommonProtos.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Google.Api.CommonProtos.dll": {}
         }
       },
       "Google.Protobuf/3.15.0": {
@@ -44,14 +36,10 @@
           "System.Runtime.CompilerServices.Unsafe": "4.5.2"
         },
         "compile": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Google.Protobuf.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.0/Google.Protobuf.dll": {}
         }
       },
       "Grpc.Core.Api/2.47.0": {
@@ -60,14 +48,10 @@
           "System.Memory": "4.5.3"
         },
         "compile": {
-          "lib/netstandard2.1/Grpc.Core.Api.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.1/Grpc.Core.Api.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/Grpc.Core.Api.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.1/Grpc.Core.Api.dll": {}
         }
       },
       "Grpc.Net.Client/2.47.0": {
@@ -77,14 +61,10 @@
           "Microsoft.Extensions.Logging.Abstractions": "3.0.3"
         },
         "compile": {
-          "lib/net6.0/Grpc.Net.Client.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Grpc.Net.Client.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Grpc.Net.Client.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Grpc.Net.Client.dll": {}
         }
       },
       "Grpc.Net.Common/2.47.0": {
@@ -93,27 +73,19 @@
           "Grpc.Core.Api": "2.47.0"
         },
         "compile": {
-          "lib/net6.0/Grpc.Net.Common.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Grpc.Net.Common.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Grpc.Net.Common.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Grpc.Net.Common.dll": {}
         }
       },
       "Microsoft.Extensions.Logging.Abstractions/3.0.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
       "System.Memory/4.5.3": {
@@ -128,27 +100,19 @@
       "System.Net.Http.Json/5.0.0": {
         "type": "package",
         "compile": {
-          "lib/net5.0/System.Net.Http.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/net5.0/System.Net.Http.Json.dll": {}
         },
         "runtime": {
-          "lib/net5.0/System.Net.Http.Json.dll": {
-            "related": ".xml"
-          }
+          "lib/net5.0/System.Net.Http.Json.dll": {}
         }
       },
       "System.Runtime.CompilerServices.Unsafe/4.5.2": {
         "type": "package",
         "compile": {
-          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "related": ".xml"
-          }
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         },
         "runtime": {
-          "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {
-            "related": ".xml"
-          }
+          "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       }
     }
@@ -365,36 +329,34 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net7.0": [
+    "net6.0": [
       "Dapr.Client >= 1.10.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jianglei\\.nuget\\packages\\": {}
+    "/home/leijiang/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\mygithub\\practise\\dapr\\20230227\\ex02\\ex02.csproj",
+      "projectUniqueName": "/home/leijiang/github/practise/dapr/20230227/ex02/ex02.csproj",
       "projectName": "ex02",
-      "projectPath": "F:\\mygithub\\practise\\dapr\\20230227\\ex02\\ex02.csproj",
-      "packagesPath": "C:\\Users\\jianglei\\.nuget\\packages\\",
-      "outputPath": "F:\\mygithub\\practise\\dapr\\20230227\\ex02\\obj\\",
+      "projectPath": "/home/leijiang/github/practise/dapr/20230227/ex02/ex02.csproj",
+      "packagesPath": "/home/leijiang/.nuget/packages/",
+      "outputPath": "/home/leijiang/github/practise/dapr/20230227/ex02/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\jianglei\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/leijiang/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "projectReferences": {}
         }
       },
@@ -405,8 +367,8 @@
       }
     },
     "frameworks": {
-      "net7.0": {
-        "targetAlias": "net7.0",
+      "net6.0": {
+        "targetAlias": "net6.0",
         "dependencies": {
           "Dapr.Client": {
             "target": "Package",
@@ -419,8 +381,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -432,7 +393,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/6.0.113/RuntimeIdentifierGraph.json"
       }
     }
   }

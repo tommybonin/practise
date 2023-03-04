@@ -1,28 +1,41 @@
-version: '3' 
-services: 
-   webex1: 
-      build: 
-        context: ../../dapr/20230227/ex01 
-        dockerfile: Dockerfile
-        args : 
-          dbname: dbname
-          password: password
-      image: daprex01:v1.0
-      container_name: daprex01 
-      ports: 
-          - "88:80" 
-      labels:
-        developer: leijiang
-   webex2: 
-      build: 
-        context: ../../dapr/20230227/ex02 
-        dockerfile: Dockerfile
-        args : 
-          dbname: dbname
-          password: password
-      image: daprex02:v1.0
-      container_name: daprex02 
-      ports: 
-          - "89:80" 
-      labels:
-        developer: leijiang
+version: '3'
+services:
+  webex1:
+    build:
+      context: ../../dapr/20230227/ex01
+      dockerfile: Dockerfile
+      args:
+        dbname: dbname
+        password: password
+    image: daprex01:v1.0
+    container_name: daprex01
+    ports:
+      - "8088:8088"
+    labels:
+      developer: leijiang
+
+  webex2:
+    build:
+      context: ../../dapr/20230227/ex02
+      dockerfile: Dockerfile
+      args:
+        dbname: dbname
+        password: password
+    image: daprex02:v1.0
+    container_name: daprex02
+    ports:
+      - "8089:8089"
+    labels:
+      developer: leijiang
+
+  ex01-dapr:
+    image: "daprio/daprd"
+    command: [ "./daprd", "-app-id", "ex01", "-app-port", "9088" ]
+    depends_on:
+      - webex1
+
+  ex02-dapr:
+    image: "daprio/daprd"
+    command: [ "./daprd", "-app-id", "ex02", "-app-port", "9089" ]
+    depends_on:
+      - webex2
