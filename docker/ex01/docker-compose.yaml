@@ -1,5 +1,39 @@
 version: '3'
 services:
+
+  ############################
+  # Redis state store
+  ############################
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6380:6379"
+    networks:
+      - demo_web
+
+  ############################
+  # Dapr actor placement service
+  ############################
+  placement:
+    image: "daprio/dapr"
+    command: [ "./placement", "-port", "50006" ]
+    ports:
+      - "50006:50006"
+    networks:
+      - demo_web
+
+  ############################
+  # Dapr zipkin service
+  ############################
+
+  zipkin:
+    image: "openzipkin/zipkin:latest"
+    #command: ["/zipkin","start-zipkin"]
+    ports:
+      - "9412:9411"
+    networks:
+      - demo_web
+
   webex1:
     build:
       context: ../../dapr/20230227/ex01
@@ -10,9 +44,14 @@ services:
     image: daprex01:v1.0
     container_name: daprex01
     ports:
-      - "8088:8088"
+      - "8088:3500"
     labels:
       developer: leijiang
+    networks:
+      - demo_web
+    depends_on:
+      - redis
+      - placement
 
   webex2:
     build:
@@ -24,18 +63,58 @@ services:
     image: daprex02:v1.0
     container_name: daprex02
     ports:
-      - "8089:8089"
+      - "8089:3500"
     labels:
       developer: leijiang
+    networks:
+      - demo_web
+    depends_on:
+      - redis
+      - placement
 
   ex01-dapr:
     image: "daprio/daprd"
-    command: [ "./daprd", "-app-id", "ex01", "-app-port", "9088" ]
+    command:
+      [
+        "./daprd",
+        "-app-id",
+        "ex01",
+        "-app-port",
+        "80",
+        "-placement-host-address",
+        "placement:50006",
+        "-config",
+        "/dapr/config.yaml",
+        "-components-path",
+        "/dapr/components"
+      ]
     depends_on:
       - webex1
+    volumes:
+      - "./dapr/:/dapr"
+    network_mode: "service:webex1"
 
   ex02-dapr:
     image: "daprio/daprd"
-    command: [ "./daprd", "-app-id", "ex02", "-app-port", "9089" ]
+    command:
+      [
+        "./daprd",
+        "-app-id",
+        "ex02",
+        "-app-port",
+        "80",
+        "-placement-host-address",
+        "placement:50006",
+        "-config",
+        "/dapr/config.yaml",
+        "-components-path",
+        "/dapr/components"
+      ]
     depends_on:
       - webex2
+    volumes:
+      - "./dapr/:/dapr"
+    network_mode: "service:webex2"
+
+networks:
+  demo_web:
