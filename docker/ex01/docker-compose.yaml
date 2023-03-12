@@ -1,6 +1,25 @@
 version: '3'
 services:
 
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./cnf/my.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+      - ./init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - 3306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
   ############################
   # Redis state store
   ############################
