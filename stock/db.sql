@@ -1,3 +1,25 @@
+-- 股票基本信息表
+CREATE TABLE stocks (
+    id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键id', 
+    name VARCHAR(255) NOT NULL COMMENT '股票名称', 
+    symbol VARCHAR(10) UNIQUE NOT NULL COMMENT '股票代码，唯一', 
+    exchange VARCHAR(50) NOT NULL COMMENT '交易所', 
+    industry VARCHAR(100) COMMENT '行业', 
+    market_cap DECIMAL(20,2) COMMENT '市值', 
+    listed_date DATE COMMENT '上市日期', 
+    is_active BOOLEAN DEFAULT true COMMENT '是否上市'
+);
+
+-- 股票高管任期表
+CREATE TABLE stock_executives (
+    id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键id', 
+    stock_id INT NOT NULL COMMENT '股票id', 
+    executive_name VARCHAR(255) NOT NULL COMMENT '高管姓名', 
+    start_date DATE NOT NULL COMMENT '任期开始日期', 
+    end_date DATE COMMENT '任期结束日期', 
+    FOREIGN KEY (stock_id) REFERENCES stocks(id) COMMENT '外键关联stocks表id字段'
+);
+
 -- 财务报表表格
 CREATE TABLE financial_statements (
     id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键id', 
@@ -10,18 +32,6 @@ CREATE TABLE financial_statements (
     total_liabilities DECIMAL(20,2) COMMENT '总负债', 
     total_equity DECIMAL(20,2) COMMENT '净资产', 
     FOREIGN KEY (stock_id) REFERENCES stocks(id) COMMENT '外键关联stocks表id字段'
-);
-
--- 股票基本信息表
-CREATE TABLE stocks (
-    id INT PRIMARY KEY AUTO_INCREMENT COMMENT '主键id', 
-    name VARCHAR(255) NOT NULL COMMENT '股票名称', 
-    symbol VARCHAR(10) UNIQUE NOT NULL COMMENT '股票代码，唯一', 
-    exchange VARCHAR(50) NOT NULL COMMENT '交易所', 
-    industry VARCHAR(100) COMMENT '行业', 
-    market_cap DECIMAL(20,2) COMMENT '市值', 
-    listed_date DATE COMMENT '上市日期', 
-    is_active BOOLEAN DEFAULT true COMMENT '是否上市'
 );
 
 -- 股票公告表
