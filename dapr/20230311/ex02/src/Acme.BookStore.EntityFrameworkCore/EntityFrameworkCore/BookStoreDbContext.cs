@@ -46,6 +46,8 @@ public class BookStoreDbContext :
     public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
     public DbSet<IdentityLinkUser> LinkUsers { get; set; }
 
+    public DbSet<Book> Books { set; get; }
+
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
@@ -75,11 +77,12 @@ public class BookStoreDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(BookStoreConsts.DbTablePrefix + "YourEntities", BookStoreConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Book>(b =>
+        {
+            b.ToTable(BookStoreConsts.DbTablePrefix + "Books",
+                BookStoreConsts.DbSchema);
+            b.ConfigureByConvention(); //auto configure for the base class props
+            b.Property(x => x.Name).IsRequired().HasMaxLength(128);
+        });
     }
 }
